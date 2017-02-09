@@ -4,28 +4,21 @@ This is a repo with T-Systems Java School preliminary examination tasks.
 
 [ ![Codeship Status for tschool/javaschoolexam](https://app.codeship.com/projects/a9af8940-d130-0134-89a6-5e8aaaa2a5a2/status?branch=master)](https://app.codeship.com/projects/201451)
 
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### How can I submit the result?  ###
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+* Make sure your code can be built and all tests are green
+* Commit and push all changes to your repository
+* Configure the build on CI server like Codeship
+* Add build badge to the README.md
+* Check that the badge shows green build
+* Send us an email with the link to your repository
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* In case of any questions contact the person who sent you the task or [HR department](mailto:job@t-systems.ru) of T-Systems RU.
+
+### Useful links ###
+
+* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* [Codeship](https://codeship.com)
