@@ -4,6 +4,10 @@ This is a repo with T-Systems Java School preliminary examination tasks.
 
 [ ![Codeship Status for tschool/javaschoolexam](https://app.codeship.com/projects/a9af8940-d130-0134-89a6-5e8aaaa2a5a2/status?branch=master)](https://app.codeship.com/projects/201451)
 
+### How to start?  ###
+* Install [GIT](https://git-scm.com/) and [Maven](https://maven.apache.org)
+* [Fork](https://confluence.atlassian.com/bitbucket/forking-a-repository-221449527.html) the repository 
+* You're ready to go!
 
 ### How can I submit the result?  ###
 
