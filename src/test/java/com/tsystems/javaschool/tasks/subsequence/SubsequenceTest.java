@@ -28,6 +28,19 @@ public class SubsequenceTest {
     }
 
     @Test
+    public void find00() {
+        //given
+        List x = Stream.of(1, 3, 5, 7, 9).collect(toList());
+        List y = Stream.of(10, 1, 2, 3, 4, 3, 5, 7, 9, 20).collect(toList());
+
+        //run
+        boolean result = subsequence.find(x, y);
+
+        //assert
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void find() {
         //given
         List x = Stream.of(1, 3, 5, 7, 9).collect(toList());
