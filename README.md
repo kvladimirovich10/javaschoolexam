@@ -20,7 +20,7 @@ The exam includes 3 tasks to be done: [Calculator](/tasks/Calculator.md), [Subse
 * Make sure your code can be built and all tests are green (example command: "mvn clean install")
 * Commit and push all changes to your repository
 * Configure the build on CI server like Codeship
-* Add build badge to the README.md
+* Add build badge and your name to the README.md
 * Check that the badge shows green build
 * Send us an email with the link to your repository. Be aware that the build must be green all the time after you send us the link
 
