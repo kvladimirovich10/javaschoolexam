@@ -202,4 +202,17 @@ public class CalculatorTest {
         Assert.assertEquals(expectedResult, result);
     }
 
+    @Test
+    public void evaluate15() {
+        //given
+        String input = "5+41..1-6";
+        String expectedResult = null;
+
+        //run
+        String result = calc.evaluate(input);
+
+        //assert
+        Assert.assertEquals(expectedResult, result);
+    }
+
 }
