@@ -12,6 +12,8 @@ Given input file with text lines. Create a file with all lines from the first fi
 Not guaranteed that the input files exist. In case the output file is missing it's to be created.
 If the output file exists the result of processing is to be added to it, the file shouldn't be overwritten.
 
+As a plus: write your own unit-tests for the task. Double plus : your tests don't use file IO.
+
 ### Input and expected output ###
 * Input : Input file with text lines, output file to write the result to
 * Output : true iff the processing finished successfully, false otherwise
