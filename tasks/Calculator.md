@@ -4,7 +4,7 @@
 
 ### General description ###
 
-<p>Write a calculator for evaluating arithmetic expressions.<p>
+<p>Write a calculator for evaluating arithmetic expressions.</p>
 <p>An expression can consist of:
 
 * Digits (0-9)
