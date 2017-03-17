@@ -41,7 +41,7 @@ Example of Codeship badge. Please remove the example before you send us the link
 * Wait for the response
 
 ### Tips and tricks for Codeship CI  ###
-* Codeship use Java 7 by default. Please refer to [this article](https://documentation.codeship.com/basic/languages-frameworks/java-and-jvm-based-languages/) to set up Java 8
+* Codeship uses Java 7 by default. Please refer to [this article](https://documentation.codeship.com/basic/languages-frameworks/java-and-jvm-based-languages/) to set up Java 8
 * jdk_switcher is to be used in "Setup Commands" of project configuration
 * Test command is "mvn -B test"
 * Markdown code to add badge to your README is located in Project Settings -> Notification -> Status images 
