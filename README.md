@@ -8,7 +8,14 @@ You can add dependencies with scope "test" if it's needed to write new unit-test
 
 The exam includes 3 tasks to be done: [Calculator](/tasks/Calculator.md), [Subsequence](/tasks/Subsequence.md), [Duplicates](/tasks/Duplicates.md)
 
+### Result ###
+
+* Author name : {PUT YOUR NAME HERE}
+* Codeship : {PUT YOUR CODESHIP BAGDE HERE}
+
+Example of Codeship badge. Please remove the example before you send us the link. 
 [ ![Codeship Status for tschool/javaschoolexam](https://app.codeship.com/projects/a9af8940-d130-0134-89a6-5e8aaaa2a5a2/status?branch=master)](https://app.codeship.com/projects/201451)
+
 
 ### How to start?  ###
 * Install [GIT](https://git-scm.com/) and [Maven](https://maven.apache.org)
@@ -20,8 +27,8 @@ The exam includes 3 tasks to be done: [Calculator](/tasks/Calculator.md), [Subse
 * Make sure your code can be built and all tests are green (example command: "mvn clean install")
 * Commit and push all changes to your repository
 * Configure the build on CI server like Codeship
-* Add build badge and your name to the README.md
-* Check that the badge shows green build
+* Add build badge and your name to the README.md under Result section
+* Check that the badge shows green build. We will not accept your solution if there is any red badge on the page.
 * Send us an email with the link to your repository. Be aware that the build must be green all the time after you send us the link
 
 ### Test fails but I'm sure my solution is correct. What to do?  ###
