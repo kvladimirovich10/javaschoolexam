@@ -1,11 +1,11 @@
 package com.tsystems.javaschool.tasks.pyramid;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 public class PyramidBuilderTest {
 
@@ -81,7 +81,7 @@ public class PyramidBuilderTest {
     @Test
     public void buildPyramid5() {
         // given
-        List<Integer> input = Arrays.asList(11, 1, 12, 3, 2, 13, 9, 4, 5, 14, 10, 8, 7, 15, 6);
+        List<Integer> input = Arrays.asList(11, 1, 21, 12, 3, 16, 2, 13, 9, 4, 17, 5, 14, 10, 18, 8, 7, 19, 15, 6, 20);
         int[][] expected = new int[][]{
                 {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 0},
