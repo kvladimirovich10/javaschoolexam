@@ -19,4 +19,4 @@ Refer to unit-tests for more examples.
 
 ### Input and expected output ###
 * Input : List with integer values
-* Output : 2D array with the pyramid 
+* Output : 2D array with the pyramid or CannotBuildPyramidException if it's not possible to build one
