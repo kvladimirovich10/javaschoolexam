@@ -11,9 +11,9 @@ Empty spaces are to be filled with zeros.
 In order to make the pyramid symmetric input numbers should alternate with zeros.
 
 For example, for input A={2, 4, 3, 5, 6, 1} the pyramid will look like:  
-        [0,0,1,0,0]  
-        [0,2,0,3,0]  
-        [4,0,5,0,6]  
+        [0,0,**1**,0,0]  
+        [0,**2**,0,**3**,0]  
+        [**4**,0,**5**,0,**6**]  
 
 Refer to unit-tests for more examples.
 
