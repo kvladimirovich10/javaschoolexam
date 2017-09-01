@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PyramidBuilderTest {
@@ -142,6 +143,17 @@ public class PyramidBuilderTest {
         for (int i = 1; i < 10000; i++) {
             input.add(i);
         }
+
+        // run
+        int[][] pyramid = pyramidBuilder.buildPyramid(input);
+
+        // assert (exception)
+    }
+
+    @Test(expected = CannotBuildPyramidException.class)
+    public void buildPyramid8() {
+        // given
+        List<Integer> input = Collections.nCopies(Integer.MAX_VALUE - 1, 0);
 
         // run
         int[][] pyramid = pyramidBuilder.buildPyramid(input);
