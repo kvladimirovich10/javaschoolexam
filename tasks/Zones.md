@@ -16,9 +16,9 @@ Link is unidirectional but can be used as bidirectional.
 For example, if zone A has a neighbour B then zones A and B are considered as connected, even if B doesn't have A as a neighbour.
 
 Let's imagine the following state: A-B-C-D-E. Some samples:
-- Journey with zones A, B and C is allowed
-- Journey with zones A, B and D is not allowed, because in order to travel with these zones the user has to go through zone C
-- Journey with zones A, B, C and D is allowed
+* Journey with zones A, B and C is allowed
+* Journey with zones A, B and D is not allowed, because in order to travel with these zones the user has to go through zone C
+* Journey with zones A, B, C and D is allowed
   
 
 ### Input and expected output ###
