@@ -157,6 +157,18 @@ public class RouteCheckerTest {
     }
 
     @Test
+    public void checkRoute9_1() throws Exception {
+        // given
+        List<Integer> requestedZones = Arrays.asList(4, 2, 3, 1);
+
+        // run
+        boolean result = routeChecker.checkRoute(state4, requestedZones);
+
+        //assert
+        Assert.assertFalse(result);
+    }
+
+    @Test
     public void checkRoute10() throws Exception {
         // given
         List<Integer> requestedZones = Arrays.asList(5, 4, 6);
