@@ -10,6 +10,7 @@ public class Calculator {
             return null;
 
         Stack<Token> opStack = new Stack<>();
+        StringBuilder result = new StringBuilder();
         List<Token> prefixTokenList = new ArrayList<>();
         List<Token> tokenList = new ArrayList<>();
 
@@ -31,18 +32,21 @@ public class Calculator {
         try {
             for (Token token : tokenList) {
                 if (token.isType()) {
+                    result.append(token.getPrec() + " ");
                     prefixTokenList.add(token);
                 } else if (token.getPrec() == 0)
                     opStack.push(token);
                 else if (token.getPrec() == 1) {
                     Token topToken = opStack.pop();
                     while (topToken.getPrec() != 0) {
+                        result.append(topToken.getPrec() + " ");
                         prefixTokenList.add(topToken);
                         topToken = opStack.pop();
                     }
                 } else {
                     while (!opStack.isEmpty() && (opStack.peek().getPrec() >= token.getPrec())) {
                         prefixTokenList.add(opStack.peek());
+                        result.append(opStack.pop().getToken() + " ");
                     }
                     opStack.push(token);
                 }
@@ -53,6 +57,7 @@ public class Calculator {
 
         while (!opStack.isEmpty()) {
             prefixTokenList.add(opStack.peek());
+            result.append(opStack.pop().getToken() + " ");
         }
 
         return calculator(prefixTokenList);
@@ -69,13 +74,10 @@ public class Calculator {
                 if (!token.isType()) {
                     B = stack.pop();
                     A = stack.pop();
-                    try {
-                        result = basicOperation(token.getOp(), A, B);
-                        stack.push(result);
-                    } catch (NullPointerException e) {
+                    if (basicOperation(token.getOp(), A, B) == null)
                         return null;
-                    }
-
+                    result = basicOperation(token.getOp(), A, B);
+                    stack.push(result);
                 } else
                     stack.push(token.getValue());
             }
@@ -85,7 +87,7 @@ public class Calculator {
 
         result = stack.pop();
         if ((result == Math.floor(result)) && !Double.isInfinite(result))
-            return String.valueOf((int) result);
+            return String.valueOf((int)result);
         else
             return String.valueOf(result);
 
@@ -106,10 +108,16 @@ public class Calculator {
                 result = A * B;
                 break;
             case '/':
-                if (B == 0.0)
+                if (B == 0)
                     return null;
                 result = A / B;
         }
         return result;
     }
+
+    private double roundOff(double value)
+    {
+        return Math.round(value*1000)/1000;
+    }
+
 }
