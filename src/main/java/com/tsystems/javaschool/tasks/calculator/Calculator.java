@@ -1,5 +1,7 @@
 package com.tsystems.javaschool.tasks.calculator;
 
+import com.tsystems.javaschool.tasks.pyramid.CannotBuildPyramidException;
+
 import java.util.*;
 
 public class Calculator {
@@ -11,6 +13,7 @@ public class Calculator {
      *                  parentheses, operations signs '+', '-', '*', '/'<br>
      *                  Example: <code>(1 + 38) * 4.5 - 1 / 2.</code>
      * @return string value containing result of evaluation or null if statement is invalid
+     * @throws {@link EmptyStackException} if the statement is invalid
      */
 
     public String evaluate(String statement) {
@@ -22,6 +25,11 @@ public class Calculator {
         List<Token> prefixTokenList = new ArrayList<>();
         List<Token> tokenList = new ArrayList<>();
 
+        /*
+         * getting rid off random spaces
+         * splitting down into list of strings, still in the infix form
+         */
+
         String st = statement.replaceAll("\\s+", "");
         String regex = "((?<=-)|(?=-)|" +
                 "(?<=\\+)|(?=\\+)|" +
@@ -32,9 +40,17 @@ public class Calculator {
 
         List<String> stringTokens = Arrays.asList(st.split(regex));
 
+        /*
+         * parsing of the list of token strings into value token and operations
+         */
+
         for (String token : stringTokens) {
             tokenList.add(new Token(token));
         }
+
+        /*
+         * converting infix form to postfix form
+         */
 
         try {
             for (Token token : tokenList) {
@@ -63,8 +79,21 @@ public class Calculator {
             prefixTokenList.add(opStack.pop());
         }
 
+        /*
+         * calculating postfix form statement
+         */
+
         return calculator(prefixTokenList);
     }
+
+    /**
+     * Implementation of a postfix calculator
+     *
+     * @param prefixTokenList: list of tokens in a prefix form
+     *
+     * @return String result of prefix calculations
+     * @throws {@link EmptyStackException} in case of division by 0
+     */
 
     private String calculator(List<Token> prefixTokenList) {
         Stack<Double> stack = new Stack<>();
@@ -72,7 +101,6 @@ public class Calculator {
 
         try {
             for (Token token : prefixTokenList) {
-
                 if (!token.isType()) {
                     B = stack.pop();
                     A = stack.pop();
@@ -93,11 +121,20 @@ public class Calculator {
         if ((result == Math.floor(result)) && !Double.isInfinite(result))
             return String.valueOf((int) result);
         else {
-            String.valueOf(roundOff(result));
             return String.valueOf(roundOff(result));
         }
 
     }
+
+    /**
+     * Executes basic math operations
+     *
+     * @param op: '+', '-', '*', '/'
+     * @param A: first operand
+     * @param B: second operand
+     *
+     * @return Double result of basic math operations
+     */
 
     private Double basicOperation(char op, double A, double B) {
 
@@ -121,8 +158,15 @@ public class Calculator {
         return result;
     }
 
-    private double roundOff(double value) {
+    /**
+     * A round off operation
+     *
+     * @param value: a number to round off
+     *
+     * @return double rounded off result
+     */
 
+    private double roundOff(double value) {
         if (String.valueOf(value).split("\\.")[1].length() > 5)
             return (double) Math.round(value * 10000) / 10000;
         else
