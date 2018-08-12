@@ -1,6 +1,8 @@
 package com.tsystems.javaschool.tasks.subsequence;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Subsequence {
 
@@ -22,12 +24,17 @@ public class Subsequence {
         else {
             if (x.isEmpty())
                 return true;
-            int i = 0;
-            for (Object yObj : y) {
-                if (x.get(i).equals(yObj)) {
-                    if (i == x.size() - 1)
+
+            Iterator xIterator = x.iterator();
+
+            Object curX = xIterator.next();
+
+            for (Object yObj:y) {
+                if (yObj.equals(curX)) {
+                    if (!xIterator.hasNext())
                         return true;
-                    i++;
+                    else
+                        curX = xIterator.next();
                 }
             }
             return false;

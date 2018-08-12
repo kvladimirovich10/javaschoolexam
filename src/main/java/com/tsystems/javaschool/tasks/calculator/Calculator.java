@@ -14,34 +14,33 @@ public class Calculator {
         List<Token> tokenList = new ArrayList<>();
 
         String st = statement.replaceAll("\\s+", "");
-        String delims = "((?<=-)|(?=-)|" +
+        String regex = "((?<=-)|(?=-)|" +
                 "(?<=\\+)|(?=\\+)|" +
                 "(?<=/)|(?=/)|" +
                 "(?<=\\*)|(?=\\*))|" +
                 "(?<=\\()|(?=\\()|" +
                 "(?<=\\)|(?=\\)))";
 
-        List<String> stringTokens = Arrays.asList(st.split(delims));
+        List<String> stringTokens = Arrays.asList(st.split(regex));
 
         for (String token : stringTokens) {
             tokenList.add(new Token(token));
         }
 
-
         try {
             for (Token token : tokenList) {
                 if (token.isType()) {
                     prefixTokenList.add(token);
-                } else if (token.getPrec() == 0)
+                } else if (token.getPriority() == 0)
                     opStack.push(token);
-                else if (token.getPrec() == 1) {
+                else if (token.getPriority() == 1) {
                     Token topToken = opStack.pop();
-                    while (topToken.getPrec() != 0) {
+                    while (topToken.getPriority() != 0) {
                         prefixTokenList.add(topToken);
                         topToken = opStack.pop();
                     }
                 } else {
-                    while (!opStack.isEmpty() && (opStack.peek().getPrec() >= token.getPrec())) {
+                    while (!opStack.isEmpty() && (opStack.peek().getPriority() >= token.getPriority())) {
                         prefixTokenList.add(opStack.pop());
                     }
                     opStack.push(token);
@@ -62,16 +61,17 @@ public class Calculator {
         Stack<Double> stack = new Stack<>();
         double A, B, result;
 
-
         try {
             for (Token token : prefixTokenList) {
 
                 if (!token.isType()) {
                     B = stack.pop();
                     A = stack.pop();
-                    if (basicOperation(token.getOp(), A, B) == null)
+                    try {
+                        result = basicOperation(token.getOp(), A, B);
+                    } catch (NullPointerException e) {
                         return null;
-                    result = basicOperation(token.getOp(), A, B);
+                    }
                     stack.push(result);
                 } else
                     stack.push(token.getValue());
@@ -82,9 +82,9 @@ public class Calculator {
 
         result = stack.pop();
         if ((result == Math.floor(result)) && !Double.isInfinite(result))
-            return String.valueOf((int)result);
+            return String.valueOf((int) result);
         else
-            return String.valueOf(result);
+            return String.valueOf(roundOff(result));
 
     }
 
@@ -110,9 +110,13 @@ public class Calculator {
         return result;
     }
 
-    private double roundOff(double value)
-    {
-        return Math.round(value*1000)/1000;
+    private double roundOff(double value) {
+        int fractional = Integer.parseInt(String.valueOf(value).split("\\.")[1]);
+
+        if (String.valueOf(fractional).length() > 5)
+            return (double) Math.round(value * 10000) / 10000;
+        else
+            return value;
     }
 
 }
