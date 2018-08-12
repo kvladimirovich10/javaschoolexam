@@ -1,6 +1,5 @@
 package com.tsystems.javaschool.tasks.pyramid;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -17,32 +16,30 @@ public class PyramidBuilder {
     public int[][] buildPyramid(List<Integer> inputNumbers) {
         int len = inputNumbers.size();
 
-        double x = (Math.sqrt(1 + 8 * len) - 1) / 2;
+        double requiredNumberOfElements = (Math.sqrt(1 + 8 * len) - 1) / 2;
 
-        if ((x == Math.floor(x)) && !Double.isInfinite(x) && !inputNumbers.contains(null)) {
-            System.out.println("Integer!" + x + " " + len);
+        if ((requiredNumberOfElements == Math.floor(requiredNumberOfElements)) &&
+                !Double.isInfinite(requiredNumberOfElements) &&
+                !inputNumbers.contains(null)) {
+
             inputNumbers.sort(Comparator.naturalOrder());
-            int size = (int) x;
-            int[][] result = new int[size][size + (size - 1)];
+
+            int size_i = (int) requiredNumberOfElements;
+            int size_j = size_i + (size_i - 1);
+            int[][] result = new int[size_i][size_j];
             int indGlobal = 0;
-            for (int i = 0 ; i < size ; i++) {
-                for (int j = 0 ; j < size + (size - 1) ; j++) {
+
+            for (int i = 0 ; i < size_i ; i++) {
+                for (int j = 0 ; j < size_j ; j++) {
                     result[i][j] = 0;
                 }
 
-                int indStart = ((size + (size - 1)) - (i + (i + 1))) / 2;
+                int indStart = (size_j - (2 * i + 1)) / 2;
 
-                for (int j = indStart ; j < size + (size - 1) - indStart ; j += 2) {
+                for (int j = indStart ; j < size_j - indStart ; j += 2) {
                     result[i][j] = inputNumbers.get(indGlobal);
                     indGlobal++;
                 }
-            }
-
-            for (int i = 0 ; i < size ; i++) {
-                for (int j = 0 ; j < size + (size - 1) ; j++) {
-                    System.out.print(result[i][j] + " ");
-                }
-                System.out.println();
             }
 
             return result;

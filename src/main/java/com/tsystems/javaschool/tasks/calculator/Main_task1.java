@@ -1,0 +1,1 @@
+package com.tsystems.javaschool.tasks.calculator;public class Main_task1 {    public static void main(String[] args) {        Calculator c = new Calculator();        String result = c.evaluate("(2+2-4*(2+34-229*4)/5+4)*2+32/3.4");        System.out.println(result);    }}
