@@ -26,7 +26,6 @@ public class Subsequence {
                 return true;
 
             Iterator xIterator = x.iterator();
-
             Object curX = xIterator.next();
 
             for (Object yObj:y) {
