@@ -49,6 +49,31 @@ public class Calculator {
         }
 
         /*
+         * handling with 2 * (-2) -> 2 * ( - 2 ) -> 2 * -2
+         * statement 2*-2 is still invalid
+         */
+
+        for (int i = 0 ; i < tokenList.size() - 2 ; i++) {
+            if (tokenList.get(i).getOp() == '(' &&
+                    tokenList.get(i + 1).getOp() == '-' &&
+                    tokenList.get(i + 2).isType() &&
+                    tokenList.get(i + 3).getOp() == ')') {
+
+                Token negativeToken = new Token("-" +
+                        tokenList.get(i + 2).getToken());
+
+                tokenList.remove(i);
+                tokenList.remove(i);
+                tokenList.remove(i);
+
+                tokenList.add(i, negativeToken);
+
+                tokenList.remove(i + 1);
+
+            }
+        }
+
+        /*
          * converting infix form to postfix form
          */
 
@@ -90,7 +115,6 @@ public class Calculator {
      * Implementation of a postfix calculator
      *
      * @param prefixTokenList: list of tokens in a prefix form
-     *
      * @return String result of prefix calculations
      * @throws {@link EmptyStackException} in case of division by 0
      */
@@ -130,9 +154,8 @@ public class Calculator {
      * Executes basic math operations
      *
      * @param op: '+', '-', '*', '/'
-     * @param A: first operand
-     * @param B: second operand
-     *
+     * @param A:  first operand
+     * @param B:  second operand
      * @return Double result of basic math operations
      */
 
@@ -162,7 +185,6 @@ public class Calculator {
      * A round off operation
      *
      * @param value: a number to round off
-     *
      * @return double rounded off result
      */
 
