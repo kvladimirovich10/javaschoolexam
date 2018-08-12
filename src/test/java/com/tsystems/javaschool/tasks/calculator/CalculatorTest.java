@@ -8,32 +8,6 @@ public class CalculatorTest {
     private Calculator calc = new Calculator();
 
     @Test
-    public void evaluate_roundOff_test() {
-        //given
-        String input = "1/3";
-        String expectedResult = "0.3333";
-
-        //run
-        String result = calc.evaluate(input);
-
-        //assert
-        Assert.assertEquals(expectedResult, result);
-    }
-
-    @Test
-    public void evaluate_negative_number_test() {
-        //given
-        String input = "(-1)*4-(-3)+(34/2)*(-3)";
-        String expectedResult = "-52";
-
-        //run
-        String result = calc.evaluate(input);
-
-        //assert
-        Assert.assertEquals(expectedResult, result);
-    }
-
-    @Test
     public void evaluate() {
         //given
         String input = "2+3";
