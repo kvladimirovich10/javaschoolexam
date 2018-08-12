@@ -4,6 +4,15 @@ import java.util.*;
 
 public class Calculator {
 
+    /**
+     * Evaluate statement represented as string.
+     *
+     * @param statement mathematical statement containing digits, '.' (dot) as decimal mark,
+     *                  parentheses, operations signs '+', '-', '*', '/'<br>
+     *                  Example: <code>(1 + 38) * 4.5 - 1 / 2.</code>
+     * @return string value containing result of evaluation or null if statement is invalid
+     */
+
     public String evaluate(String statement) {
 
         if (statement == null || statement.isEmpty())
@@ -83,8 +92,10 @@ public class Calculator {
         result = stack.pop();
         if ((result == Math.floor(result)) && !Double.isInfinite(result))
             return String.valueOf((int) result);
-        else
+        else {
+            String.valueOf(roundOff(result));
             return String.valueOf(roundOff(result));
+        }
 
     }
 
@@ -111,9 +122,8 @@ public class Calculator {
     }
 
     private double roundOff(double value) {
-        int fractional = Integer.parseInt(String.valueOf(value).split("\\.")[1]);
 
-        if (String.valueOf(fractional).length() > 5)
+        if (String.valueOf(value).split("\\.")[1].length() > 5)
             return (double) Math.round(value * 10000) / 10000;
         else
             return value;
