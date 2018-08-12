@@ -8,6 +8,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.naming.NameNotFoundException;
+
 public class PyramidBuilderTest {
 
     private PyramidBuilder pyramidBuilder = new PyramidBuilder();
@@ -109,6 +111,8 @@ public class PyramidBuilderTest {
         int[][] pyramid = pyramidBuilder.buildPyramid(input);
 
         // assert (exception)
+
+
     }
 
     @Test(expected = CannotBuildPyramidException.class)
@@ -126,7 +130,7 @@ public class PyramidBuilderTest {
     public void buildPyramid6() {
         // given
         List<Integer> input = new ArrayList<>();
-        for (int i = 1; i < 256; i++) {
+        for (int i = 1 ; i < 256 ; i++) {
             input.add(i);
         }
 
@@ -140,7 +144,7 @@ public class PyramidBuilderTest {
     public void buildPyramid7() {
         // given
         List<Integer> input = new ArrayList<>();
-        for (int i = 1; i < 10000; i++) {
+        for (int i = 1 ; i < 10000 ; i++) {
             input.add(i);
         }
 
@@ -179,7 +183,7 @@ public class PyramidBuilderTest {
 
     private void comparePyramids(int[][] expected, int[][] pyramid) {
         Assert.assertEquals("Amount of rows is different.", expected.length, pyramid.length);
-        for (int i = 0; i < expected.length; i++) {
+        for (int i = 0 ; i < expected.length ; i++) {
             Assert.assertArrayEquals(expected[i], pyramid[i]);
         }
     }

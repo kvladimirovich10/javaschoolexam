@@ -10,7 +10,6 @@ public class Calculator {
             return null;
 
         Stack<Token> opStack = new Stack<>();
-        StringBuilder result = new StringBuilder();
         List<Token> prefixTokenList = new ArrayList<>();
         List<Token> tokenList = new ArrayList<>();
 
@@ -32,21 +31,18 @@ public class Calculator {
         try {
             for (Token token : tokenList) {
                 if (token.isType()) {
-                    result.append(token.getPrec() + " ");
                     prefixTokenList.add(token);
                 } else if (token.getPrec() == 0)
                     opStack.push(token);
                 else if (token.getPrec() == 1) {
                     Token topToken = opStack.pop();
                     while (topToken.getPrec() != 0) {
-                        result.append(topToken.getPrec() + " ");
                         prefixTokenList.add(topToken);
                         topToken = opStack.pop();
                     }
                 } else {
                     while (!opStack.isEmpty() && (opStack.peek().getPrec() >= token.getPrec())) {
-                        prefixTokenList.add(opStack.peek());
-                        result.append(opStack.pop().getToken() + " ");
+                        prefixTokenList.add(opStack.pop());
                     }
                     opStack.push(token);
                 }
@@ -56,8 +52,7 @@ public class Calculator {
         }
 
         while (!opStack.isEmpty()) {
-            prefixTokenList.add(opStack.peek());
-            result.append(opStack.pop().getToken() + " ");
+            prefixTokenList.add(opStack.pop());
         }
 
         return calculator(prefixTokenList);
